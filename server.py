@@ -3,6 +3,7 @@ from flask_socketio import SocketIO, emit
 import random
 import threading
 import time
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
@@ -228,4 +229,4 @@ def handle_clear_canvas():
 if __name__ == '__main__':
     import eventlet
     eventlet.monkey_patch()
-    socketio.run(app, host='0.0.0.0', port=10000)
+    socketio.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 10000)))
