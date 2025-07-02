@@ -2,8 +2,10 @@ services:
   - type: web
     name: scribble-game
     env: python
-    buildCommand: ""
+    buildCommand: pip install -r requirements.txt
     startCommand: python server.py
     envVars:
       - key: PORT
         value: 10000
+      - key: FLASK_ENV
+        value: production

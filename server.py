@@ -7,7 +7,7 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
 
 connected_users = {}
 users_scores = {}
@@ -227,6 +227,4 @@ def handle_clear_canvas():
         emit("clear_canvas", broadcast=True, include_self=False)
 
 if __name__ == '__main__':
-    import eventlet
-    eventlet.monkey_patch()
     socketio.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 10000)))
