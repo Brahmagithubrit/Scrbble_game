@@ -1,0 +1,14 @@
+# Ignore virtual environments
+env/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Editor-specific
+.vscode/
+.idea/
+
+# Python env vars
+*.env
+.env
